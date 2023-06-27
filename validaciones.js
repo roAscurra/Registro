@@ -1,6 +1,4 @@
 const button = document.getElementById('boton');
-const modal = document.getElementById('ventana');
-const cerrarModal = document.getElementById('cerrarVentana');
 button.disabled = true;
 function habilitarBoton(){
     let nombre = document.getElementById('nombre').value;
@@ -20,6 +18,9 @@ function habilitarBoton(){
     }
     if( password !== contrasena2){
         des++;
+        document.getElementById('mensaje-aviso').style.display = 'block';
+    } else {
+        document.getElementById('mensaje-aviso').style.display = 'none';
     }
     if(!valorTerminos){
         des++;
@@ -34,10 +35,3 @@ function habilitarBoton(){
 document.getElementById('terminos').addEventListener('change',habilitarBoton);
 document.getElementById('form').addEventListener('keyup',habilitarBoton);
 
-button.addEventListener("click",()=>{
-    modal.showModal();
-})
-cerrarModal.addEventListener("click",()=>{
-    modal.close();
-    button.disabled=true;
-})

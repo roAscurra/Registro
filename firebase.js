@@ -2,7 +2,7 @@
  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js";
  import { getDatabase, ref, push, update, get, set, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js";
- import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, onIdTokenChanged} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
+ import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, fetchSignInMethodsForEmail} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
 
  // TODO: Add SDKs for Firebase products that you want to use
  // https://firebase.google.com/docs/web/setup#available-libraries
@@ -64,5 +64,14 @@
         var errorMessage = error.message;
         console.log(errorMessage);
       });
-      
+  };
+  export const verificarUsuarioEnUso = async (email) => {
+    const auth = getAuth();
+    try {
+      const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+      return signInMethods.length > 0; // Retorna true si existen métodos de inicio de sesión para el correo electrónico
+    } catch (error) {
+      console.log('Error al verificar el usuario:', error);
+      return false; // En caso de error, asumimos que el usuario no está en uso
+    }
   };
