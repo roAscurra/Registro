@@ -47,11 +47,14 @@
             <span>*</span>
         </label>
         <input type="password" id="contra2">
-        <input type="checkbox" id="terminos">
-        <label for="condiciones">Acepto los 
-            <a href="https://sites.google.com/view/pig-production/bases-terminos-y-condiciones" target="_blank">términos y condiciones</a>
-            <span>*</span>
-        </label>
+        <div class="checkbox-container">
+            <input type="checkbox" id="terminos">
+            <label for="terminos" id="condiciones">
+              Acepto los
+              <a href="https://sites.google.com/view/pig-production/bases-terminos-y-condiciones" target="_blank">términos y condiciones</a>
+              <span>*</span>
+            </label>
+          </div>
         <button id="boton" class="btn">CREAR</button>
     </form>
     <dialog id="ventana">
