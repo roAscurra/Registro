@@ -37,7 +37,7 @@
           .catch((error) => {
             console.log('Error al enviar el correo de verificación:', error);
           });
-          const emailVerified = false; // Establecer inicialmente como no verificado
+          const emailVerified = user.emailVerified; // Establecer inicialmente como no verificado
           const fechaCreacion = new Date().toLocaleString(); // Obtener la fecha y hora actual en formato de fecha y hora
           // Guardar los datos en la base de datos
           const userRef = ref(db, `Usuarios/${user.uid}`);
