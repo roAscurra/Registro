@@ -1,6 +1,8 @@
 import { registrar, verificarUsuarioEnUso  } from "./firebase.js";
 const button = document.getElementById('boton');
 const modal = document.getElementById('ventana');
+const modal2 = document.getElementById('ventana2');
+const cerrarModal2 = document.getElementById('cerrarVentana2');
 const cerrarModal = document.getElementById('cerrarVentana');
 const form = document.getElementById('form');
 window.addEventListener('DOMContentLoaded',()=>{
@@ -27,7 +29,11 @@ window.addEventListener('DOMContentLoaded',()=>{
             modal.showModal();
             cerrarModal.addEventListener("click",()=>{
                 modal.close();
-                button.disabled = true;
+                modal2.showModal()
+                cerrarModal2.addEventListener("click", () => {
+                    button.disabled = true;
+                    modal2.close();
+                })
             })
             form.reset();
         }
